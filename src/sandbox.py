@@ -1,4 +1,4 @@
-from InputHandler import InputHandler
+from Handler.InputHandler import InputHandler
 
 print("File : \t Input Handler tester")
 
@@ -7,3 +7,4 @@ I2 = InputHandler(3, 3, 10)
 
 I1.printVectors()
 I2.printVectors()
+I2.visualizeVectors()
