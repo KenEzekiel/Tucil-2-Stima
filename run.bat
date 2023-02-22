@@ -1,1 +1,1 @@
-python testInput.py InputHandler.py
+python TestInputHandler.py InputHandler.py

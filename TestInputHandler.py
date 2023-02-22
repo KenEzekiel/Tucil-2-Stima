@@ -1,9 +1,9 @@
 from InputHandler import InputHandler
 
-print("Input Handler tester")
+print("File : \t Input Handler tester")
 
+I1 = InputHandler(3, 4, 100, decimalOn=False)
 I2 = InputHandler(3, 3, 10)
 
-print("test")
-
+I1.printVectors()
 I2.printVectors()
