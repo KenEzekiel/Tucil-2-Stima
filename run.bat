@@ -1,1 +1,1 @@
-python TestInputHandler.py InputHandler.py
+python ./src/sandbox.py ./src/Handler/InputHandler.py ./src/MathService.py
