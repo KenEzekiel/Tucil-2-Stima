@@ -4,16 +4,23 @@ import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
 class InputHandler():
-    def __init__(self, num: int, dimension: int, size: int, decimalOn=True):
+    def __init__(self, num: int, dimension: int, size: int, decimalOn=True, randomize=True, inputVector=numpy.array([])):
         self.num = num
         self.dimension = dimension
         self.size = size
         self.vecArr = []
-        self.randomizeVector()
+        # option to randomize the vectors or not
+        if (randomize):
+            self.randomizeVector()
+        else:
+            self.vecArr = inputVector
+        # option to use decimals or not
         if not decimalOn:
             self.vecArr = numpy.round(self.vecArr)
         else:
             self.vecArr = numpy.round(self.vecArr, 3)
+        # Preprocessing
+        self.vecArr = numpy.sort(self.vecArr, axis=0)
     
     def randomizeVector(self):
         print("Randomizing vectors...")
@@ -45,5 +52,6 @@ class InputHandler():
 
         plt.show()
 
+    
 
-        
+    
