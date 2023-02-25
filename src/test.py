@@ -24,9 +24,19 @@ import MathService
 #         if not np.array_equal(i, j):
 #             print(i, j)
 
-p1 = np.array([1,2,3])
-p2 = np.array([5,5,5])
-p3 = abs(p1 - p2)[1:]
-print(all(i < 3 for i in p3))
+# p1 = np.array([1,2,3])
+# p2 = np.array([5,5,5])
+# p3 = abs(p1 - p2)[1:]
+# print(all(i < 3 for i in p3))
 
-print(p3)
+# print(p3)
+
+def incCount(count):
+    count += 1
+    if (count == 2):
+        count = incCount(count)
+    return count
+
+test = 1
+test = incCount(test)
+print(test)
