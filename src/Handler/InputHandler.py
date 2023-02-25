@@ -1,7 +1,11 @@
 # Importing Libraries
 import numpy
+from numpy.random import Generator, PCG64
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
+import time
+
+
 
 class InputHandler():
     def __init__(self, num: int, dimension: int, size: int, decimalOn=True, randomize=True, inputVector=numpy.array([])):
@@ -24,8 +28,14 @@ class InputHandler():
     
     def randomizeVector(self):
         print("Randomizing vectors...")
-        self.vecArr = numpy.random.rand(self.num, self.dimension)
-        self.vecArr = self.size * self.vecArr
+        
+        # self.vecArr = numpy.random.uniform(low=0.0, high=self.size, size=(self.num, self.dimension))
+        vector = []
+        for i in range(self.num * self.dimension):
+            a = numpy.random.uniform(low=0.0, high=self.size)
+            vector.append(a)
+        self.vecArr = numpy.array(vector).reshape(self.num, self.dimension)
+        # self.vecArr = self.size * self.vecArr
 
     def printVectors(self):
         print("Printing vectors...")
