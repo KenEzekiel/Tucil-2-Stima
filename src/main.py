@@ -73,7 +73,7 @@ else:
     Input = InputHandler(n_points, n_dim, size, decimalOn=decimal, randomize=random, inputVector=vec)
 
 # Divide and Conquer
-
+print(bcolors.BOLD + bcolors.WARNING + "START CONQUERING!" + bcolors.ENDC)
 timestart = time.perf_counter()
 pair, dist = Mt.getClosestPair(Input.vecArr, Input.num)
 timefinish = time.perf_counter()
@@ -84,7 +84,7 @@ print(bcolors.BOLD + bcolors.WARNING + f"{pair[0]}: {Input.vecArr[pair[0]]}" + b
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[1]}: {Input.vecArr[pair[1]]}" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.OKCYAN + "number of operations:", Mt.n, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.OKCYAN + f"time duration: {timeduration} seconds" + bcolors.ENDC)
-print(bcolors.WARNING + "NOW THE PROBLEM HAS BEEN CONQUERED! DEVIDE ET IMPERA!" + bcolors.ENDC)
+print(bcolors.BOLD + bcolors.WARNING + "NOW THE PROBLEM HAS BEEN CONQUERED! DEVIDE ET IMPERA!" + bcolors.ENDC)
 
 # Brute Force
 Mt.n = 0 # reset the operation counter
