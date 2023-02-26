@@ -60,7 +60,7 @@ else:
     vec = []
     with open(f"{direc}/{filename}.txt", 'r') as file:
         for line in file.read().split('\n'):
-            print(line.split(' '))
+            # print(line.split(' '))
             vec.append(line.split(' '))        
 
     vec = np.array(vec).astype(float)
