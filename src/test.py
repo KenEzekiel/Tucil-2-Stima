@@ -31,12 +31,30 @@ import MathService
 
 # print(p3)
 
-def incCount(count):
-    count += 1
-    if (count == 2):
-        count = incCount(count)
-    return count
+# def incCount(count):
+#     count += 1
+#     if (count == 2):
+#         count = incCount(count)
+#     return count
 
-test = 1
-test = incCount(test)
-print(test)
+# test = 1
+# test = incCount(test)
+# print(test)
+
+# a = np.array([768.929,  89.633, 665.532, 131.119])
+# b = np.array([768.932, 100.412, 618.973, 101.508])
+
+a = np.array([1, 2, 3])
+b = np.array([9, 5, 6])
+
+c = np.array([904.723, 643.611, 751.382, 546.22])
+d = np.array([913.948, 622.687, 747.749, 538.427])
+
+p3 = abs(a - b)[1:]
+
+if all(x <= 3 for x in p3):
+    distance = MathService.getDistanceBetweenTwoPoints(a, b)
+    print(distance)
+
+# print(MathService.getDistanceBetweenTwoPoints(a, b))
+# print(MathService.getDistanceBetweenTwoPoints(c, d))

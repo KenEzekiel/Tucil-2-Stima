@@ -76,14 +76,19 @@ def getClosestPair(vectors : numpy.array, n : int):
             # get all points inside the slab x0 with unbounded y and z
             allpoints = numpy.array([])
             idxmapping = numpy.array([])
-            for i in vectors:
+            npoints = 0
+            for i in range(n):
                 # print(i)
                 # print(i[0])
                 # print(x0)
                 # print(closest)
-                if i[0] >= x0 - closest and i[0] <= x0 + closest:
-                    numpy.append(allpoints, i)
-                    numpy.append(idxmapping, numpy.where(vectors == i)[0])
+                if vectors[i][0] >= x0 - closest and vectors[i][0] <= x0 + closest:
+                    allpoints = numpy.append(allpoints, vectors[i])
+                    idxmapping = numpy.append(idxmapping, i)
+                    npoints += 1
+            allpoints = numpy.reshape(allpoints, (npoints, vectors[0].size))
+            # print(allpoints)
+            # print(idxmapping)
             # only need to consider these points in the slab
 
             # # need to take care of when dimension is 1
@@ -96,8 +101,9 @@ def getClosestPair(vectors : numpy.array, n : int):
             # there will always be a hard limit on the number of points for every point inside the slab, for 2D, it is 6, for 3D it is 18 and so on
             # thus O(n * n) will be O(n * k) where k is a constant, 
             # therefore O(n), even considering the pessimistic scenario where all points are in the slab
-            for i in range(0, allpoints.size):
-                for j in range(0, allpoints.size):
+            nrow, ncol = allpoints.shape
+            for i in range(0, nrow):
+                for j in range(0, nrow):
                     if i != j:
                         p1 = allpoints[i]
                         p2 = allpoints[j]
@@ -109,7 +115,8 @@ def getClosestPair(vectors : numpy.array, n : int):
                             distance = getDistanceBetweenTwoPoints(p1, p2)
                             if distance < closest:
                                 closest = distance
-                                idxpair = numpy.array([idxmapping[i], idxmapping[j]])
+                                idxpair = numpy.array([idxmapping[i], idxmapping[j]]).astype(int)
+                                # print(idxpair, idxpair[0])
                             
 
             # # only getting the closest on the yz-projection does not guarantee it is also the closest in 3D
