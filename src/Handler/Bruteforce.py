@@ -1,7 +1,10 @@
 import math
 import numpy
 
+n = 0
+
 def bruteforce(vectors):
+    global n
     # print(vectors.vecArr.shape[0])
     closest = 9999
 
@@ -25,12 +28,15 @@ def bruteforce(vectors):
 
                 # Check if value is smaller than closest value
                 val = math.sqrt(temp)
-                print(val)
+
+                # TESTING
+                # print(val)
+                n += 1
                 if (val < closest):
                     closest = val
                     idxpair = [i, j]
     # TESTING
     # print(closest)
     # print(idxpair)
-    
+
     return idxpair, numpy.round(closest, 3)
