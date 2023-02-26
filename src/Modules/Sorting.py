@@ -1,9 +1,9 @@
 import numpy
 
-# DIVIDE AND CONQUER
+# ======================================================================= # 
 
-# Quick Sorting
-# causes several problem due to recursion limit on python
+# DIVIDE AND CONQUER
+# QUICK SORT
 
 def partitioning(vectors: numpy.array, lowerBound: int, upperBound: int):
     # Choose the pivoting
@@ -29,3 +29,4 @@ def quickSort(vectors: numpy.array, lowerBound: int, upperBound: int):
         # Recursive on the left and right of pivot
         quickSort(vectors, lowerBound, x-1)
         quickSort(vectors, x+1, upperBound)
+

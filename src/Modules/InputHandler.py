@@ -1,11 +1,9 @@
 # Importing Libraries
-from Handler.Sorting import partitioning
-from Handler.Sorting import quickSort
+from Modules.Sorting import partitioning
+from Modules.Sorting import quickSort
 
 import numpy
 from numpy.random import Generator, PCG64
-import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
 import time
 
 class InputHandler():
@@ -54,28 +52,3 @@ class InputHandler():
     def printVectors(self):
         print("Printing vectors...")
         print(self.vecArr)
-
-    def visualizeVectors(self):
-        print("Visualizing Vectors...")
-        # Configure Plot
-        fig = plt.figure()
-        ax = plt.axes(projection='3d')
-
-        # Set labels
-        ax.set_xlabel('X Label')
-        ax.set_ylabel('Y Label')
-        ax.set_zlabel('Z Label')
-
-        # Data for three-dimensional scattered points
-        xdata = self.vecArr[:,0]
-        ydata = self.vecArr[:,1]
-        zdata = self.vecArr[:,2]
-
-        ax.scatter(xdata, ydata, zdata, c=zdata, cmap='viridis', linewidth=0.5)
-
-
-        plt.show()
-
-    
-
-    

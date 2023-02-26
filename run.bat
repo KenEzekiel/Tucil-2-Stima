@@ -1,1 +1,0 @@
-python ./src/sandbox.py ./src/Handler/InputHandler.py ./src/MathService.py

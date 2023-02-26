@@ -1,6 +1,8 @@
-from Handler.InputHandler import InputHandler
-import MathService as Mt
-import Handler.Bruteforce as Bf
+from Modules.InputHandler import InputHandler
+from Modules.Visualizer import visualize3DResult
+from Modules.Visualizer import visualize2DResult
+import Modules.MathService as Mt
+import Modules.Bruteforce as Bf
 import time
 import numpy as np
 import os
@@ -86,28 +88,50 @@ print(bcolors.BOLD + bcolors.WARNING + f"{pair[1]}: {Input.vecArr[pair[1]]}" + b
 print(bcolors.BOLD + bcolors.OKCYAN + "number of operations:", Mt.n, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.OKCYAN + f"time duration: {timeduration} seconds" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + "NOW THE PROBLEM HAS BEEN CONQUERED! DEVIDE ET IMPERA!" + bcolors.ENDC)
-Mt.n = 0 # reset the operation counter
 
 
 # Brute Force
 print(bcolors.BOLD + bcolors.WARNING + "\nNow Bruteforcing your way through...." + bcolors.ENDC)
 timestart = time.perf_counter()
-pair, dist = Bf.bruteforce(Input.vecArr)
+pairBF, distBF = Bf.bruteforce(Input.vecArr)
 timefinish = time.perf_counter()
-timeduration = np.round(timefinish - timestart, 5)
-print(bcolors.BOLD + bcolors.OKCYAN + "closest distance:" ,dist, bcolors.ENDC)
-print(bcolors.BOLD + bcolors.OKCYAN + "pair of points index:", pair, bcolors.ENDC)
+timedurationBF = np.round(timefinish - timestart, 5)
+print(bcolors.BOLD + bcolors.OKCYAN + "closest distance:" ,distBF, bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + "pair of points index:", pairBF, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[0]}: {Input.vecArr[pair[0]]}" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[1]}: {Input.vecArr[pair[1]]}" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.OKCYAN + "number of operations:", Bf.n, bcolors.ENDC)
-print(bcolors.BOLD + bcolors.OKCYAN + f"time duration: {timeduration} seconds" + bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + f"time duration: {timedurationBF} seconds" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + "Oof! That took a lot longer" + bcolors.ENDC)
-Bf.n = 0 # reset the operation counter
+
 
 
 visualize = input(bcolors.BOLD + bcolors.HEADER + "Visualize points? (y/n) " + bcolors.ENDC)
-if (visualize == "y" and Input.dimension <= 3):
-    Input.visualizeVectors()
+if (visualize == "y" and Input.dimension == 2):
+    visualize2DResult(Input.vecArr, pair)
+elif (visualize == "y" and Input.dimension == 3):
+    visualize3DResult(Input.vecArr, pair)
 else:
     print(bcolors.BOLD + bcolors.WARNING + "Can't visualize vector!" + bcolors.ENDC)    
 
+fileSave = input(bcolors.BOLD + bcolors.HEADER + "Save results? (y/n) " + bcolors.ENDC)
+if (fileSave == "y"):
+    filename = input(bcolors.BOLD + bcolors.HEADER +"Enter Filename (no need to use .txt) : "+bcolors.ENDC)
+    path = os.path.realpath(__file__)
+    direc = os.path.dirname(path)
+    direc = direc.replace('src', 'test')
+    f = open(f"{direc}/{filename}.txt", 'w')
+    if(dist == distBF):
+        f.write("Both methods returns the same results!\n")
+    f.write(f"Closest Distance: {dist}\n")
+    f.write(f"Pair of points index: {pair}\n")
+    f.write(f"{pair[0]}: {Input.vecArr[pair[0]]}\n")
+    f.write(f"{pair[1]}: {Input.vecArr[pair[1]]}\n")
+    f.write(f"DNC Statistics: {Mt.n} operations at {timeduration} seconds\n")
+    f.write(f"BF Statistics: {Bf.n} operations at {timedurationBF} seconds\n")
+    print("Saved to files!")
+else:
+    print(bcolors.BOLD + bcolors.WARNING + "Exiting program..." + bcolors.ENDC)  
+
+Mt.n = 0 # reset the operation counter
+Bf.n = 0 # reset the operation counter
