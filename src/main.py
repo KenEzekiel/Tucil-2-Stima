@@ -1,5 +1,6 @@
 from Handler.InputHandler import InputHandler
 import MathService as Mt
+import Handler.Bruteforce as Bf
 import time
 import numpy as np
 import os
@@ -88,6 +89,17 @@ print(bcolors.BOLD + bcolors.WARNING + "NOW THE PROBLEM HAS BEEN CONQUERED! DEVI
 
 # Brute Force
 Mt.n = 0 # reset the operation counter
+timestart = time.perf_counter()
+pair, dist = Bf.bruteforce(Input.vecArr)
+timefinish = time.perf_counter()
+timeduration = np.round(timefinish - timestart, 5)
+print(bcolors.BOLD + bcolors.OKCYAN + "closest distance:" ,dist, bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + "pair of points index:", pair, bcolors.ENDC)
+print(bcolors.BOLD + bcolors.WARNING + f"{pair[0]}: {Input.vecArr[pair[0]]}" + bcolors.ENDC)
+print(bcolors.BOLD + bcolors.WARNING + f"{pair[1]}: {Input.vecArr[pair[1]]}" + bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + "number of operations:", Mt.n, bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + f"time duration: {timeduration} seconds" + bcolors.ENDC)
+print(bcolors.BOLD + bcolors.WARNING + "NOW THE PROBLEM HAS BEEN CONQUERED! DEVIDE ET IMPERA!" + bcolors.ENDC)
 
 
 visualize = input(bcolors.BOLD + bcolors.HEADER + "Visualize points? (y/n) " + bcolors.ENDC)

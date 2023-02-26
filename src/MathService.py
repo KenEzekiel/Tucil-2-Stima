@@ -22,7 +22,6 @@ def AppendifNone(A, B):
     else:
         return numpy.append(A, B)
 
-
 def getClosestPair(vectors : numpy.array, n : int):
         closest : float
         idxpair = numpy.array([])
@@ -328,3 +327,4 @@ def getClosestPairThread(vectors : numpy.array, n : int, Q):
             
         # Calculating the T(n) : O(n log n) (from the DnC algorithm) + O(nk) (see the above comments for description) = O(n log n)
         return Q.put((idxpair, numpy.round(closest, 3)))
+

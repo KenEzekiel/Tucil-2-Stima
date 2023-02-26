@@ -5,12 +5,12 @@ import time
 
 print("File : \t Input Handler tester")
 
-I1 = InputHandler(6, 4, 100, decimalOn=False)
+I1 = InputHandler(6, 4, 100)
 I2 = InputHandler(5, 3, 10)
 
 I1.printVectors()
 I2.printVectors()
-# I2.visualizeVectors()
+I2.visualizeVectors()
 
 timestart = time.perf_counter()
 pair, dist = Mt.getClosestPair(I1.vecArr, I1.num)
