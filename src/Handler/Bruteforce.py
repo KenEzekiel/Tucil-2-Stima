@@ -10,6 +10,7 @@ def bruteforce(vectors):
 
     # VecBar = [x, y, z, ... ]
     vecBar = []
+    idxpair = numpy.array([])
 
     for i in range(0, vectors.shape[0]):
         for j in range(1, vectors.shape[0]):
@@ -34,7 +35,7 @@ def bruteforce(vectors):
                 n += 1
                 if (val < closest):
                     closest = val
-                    idxpair = [i, j]
+                    idxpair = numpy.array([i, j])
     # TESTING
     # print(closest)
     # print(idxpair)
