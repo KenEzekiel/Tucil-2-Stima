@@ -94,12 +94,6 @@ def getClosestPair(vectors : numpy.array, n : int):
             # print(idxmapping)
             # only need to consider these points in the slab
 
-            # # need to take care of when dimension is 1
-            # # allpoints = allpoints.T
-            # # xprojectedallpoints = allpoints[0].T
-            # # yzprojectedallpoints = allpoints[1:allpoints.size].T
-            # # allpoints = allpoints.T
-
             # get shortest distance, compare all the points with y distance <= delta (closest) and z distance <= delta (closest) and so on for n-dimensions
             # there will always be a hard limit on the number of points for every point inside the slab, for 2D, it is 6, for 3D it is 18 and so on
             # thus O(n * n) will be O(n * k) where k is a constant, 
@@ -120,10 +114,6 @@ def getClosestPair(vectors : numpy.array, n : int):
                                 closest = distance
                                 idxpair = numpy.array([idxmapping[i], idxmapping[j]]).astype(int)
                                 # print(idxpair, idxpair[0])
-                            
-
-            # # only getting the closest on the yz-projection does not guarantee it is also the closest in 3D
-            # # mididx, midclosest = getClosestPair(yzprojectedallpoints, yzprojectedallpoints.size)
             
         # Calculating the T(n) : O(n log n) (from the DnC algorithm) + O(nk) (see the above comments for description) = O(n log n)
         return idxpair, numpy.round(closest, 3)
