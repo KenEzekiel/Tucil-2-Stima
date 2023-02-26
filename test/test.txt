@@ -1,0 +1,7 @@
+Both methods returns the same results!
+Closest Distance: 0.0
+Pair of points index: [6 7]
+6: [1. 7. 6.]
+7: [1. 7. 6.]
+DNC Statistics: 443 operations at 0.03587 seconds
+BF Statistics: 9801 operations at 0.06009 seconds

@@ -36,6 +36,9 @@ def bruteforce(vectors):
                 if (val < closest):
                     closest = val
                     idxpair = numpy.array([i, j])
+                elif (val == closest) and ([j, i] not in idxpair):
+                    idxpair = numpy.append(idxpair, [i, j])
+                
     # TESTING
     # print(closest)
     # print(idxpair)

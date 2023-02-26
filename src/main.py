@@ -58,7 +58,7 @@ else:
     # print(direc)
     os.chdir(direc)
     vec = []
-    with open(f"{direc}\\{filename}.txt", 'r') as file:
+    with open(f"{direc}/{filename}.txt", 'r') as file:
         for line in file.read().split('\n'):
             print(line.split(' '))
             vec.append(line.split(' '))        

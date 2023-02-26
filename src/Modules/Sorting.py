@@ -7,18 +7,20 @@ import numpy
 
 def partitioning(vectors: numpy.array, lowerBound: int, upperBound: int):
     # Choose the pivoting
-    pivot = vectors[upperBound]
+    pivot = vectors[0][upperBound]
     # Pointer
     i = lowerBound - 1
 
     # Traverse and comparing value with pivot
     for j in range(lowerBound, upperBound):
         # Swapping if value is lower
-        if vectors[j] <= pivot:
+        if vectors[0][j] <= pivot:
             i += 1
-            (vectors[i], vectors[j]) = (vectors[j], vectors[i])
+            for k in range(3):
+                (vectors[k][i], vectors[k][j]) = (vectors[k][j], vectors[k][i])
     # Swapping pivot element
-    (vectors[i+1], vectors[upperBound]) = (vectors[upperBound], vectors[i+1])
+    for p in range(3):
+        (vectors[p][i+1], vectors[p][upperBound]) = (vectors[p][upperBound], vectors[p][i+1])
     # Return pointer
     return (i+1)
 
