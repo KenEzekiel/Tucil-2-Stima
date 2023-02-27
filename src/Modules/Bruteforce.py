@@ -3,10 +3,10 @@ import numpy
 
 n = 0
 
-def bruteforce(vectors):
+def bruteforce(vectors: numpy.array):
     global n
     # print(vectors.vecArr.shape[0])
-    closest = 9999
+    closest = (numpy.sqrt(numpy.sum(numpy.square(vectors[1][:] - vectors[0][:]))))
 
     # VecBar = [x, y, z, ... ]
     vecBar = []

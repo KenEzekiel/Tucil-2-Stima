@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy
 from mpl_toolkits import mplot3d
 import numpy
 
@@ -36,12 +37,17 @@ def visualize3DResult(vectors: numpy.array, idxpair):
     # Configure Plot
     fig = plt.figure()
     ax = plt.axes(projection='3d')
+    count = 0
+    RGB = [0,0,0]
     xres = []
     yres = []
     zres = []
     xdata = []
     ydata = []
     zdata = []
+    x = []
+    y = []
+    z = []
 
     # Set labels
     ax.set_xlabel('X')
@@ -55,6 +61,20 @@ def visualize3DResult(vectors: numpy.array, idxpair):
             xres = numpy.append(xres, vectors[i,0])    
             yres = numpy.append(yres, vectors[i,1])
             zres = numpy.append(zres, vectors[i,2])  
+            count += 1
+            if (count % 2 == 1):
+                RGB[count % 3] = numpy.random.uniform(0.3, 1.0)
+                x = []
+                y = []
+                z = []
+                x = numpy.append(x, vectors[i,0]) 
+                y = numpy.append(y, vectors[i,1])
+                z = numpy.append(z, vectors[i,2])
+            else:
+                x = numpy.append(x, vectors[i,0]) 
+                y = numpy.append(y, vectors[i,1])
+                z = numpy.append(z, vectors[i,2])
+                ax.plot(x, y, z, color='green')
         else:
             # data
             xdata = numpy.append(xdata, vectors[i,0])   
@@ -62,7 +82,7 @@ def visualize3DResult(vectors: numpy.array, idxpair):
             zdata = numpy.append(zdata, vectors[i,2])        
 
     ax.scatter(xdata, ydata, zdata, color= "black", linewidth=0.5)
-    ax.scatter(xres, yres, zres, color="green", linewidth=0.5)
+    ax.scatter(xres, yres, zres, color=RGB, linewidth=0.5)
     plt.savefig('../test/Visualizer.png', dpi=300) 
 
     plt.show()
