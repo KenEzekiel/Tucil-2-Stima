@@ -27,7 +27,7 @@ class InputHandler():
         # Preprocessing
         # Sorting Array
         self.vecArr = numpy.transpose(self.vecArr)
-        quickSort(self.vecArr, 0, self.num-1)
+        quickSort(self.vecArr, self.dimension, 0, self.num-1)
         self.vecArr = numpy.transpose(self.vecArr)
         # print(self.vecArr)
     
