@@ -68,3 +68,5 @@ To run the program, simply use the command `run.bat` on Windows or directly run 
 * Numpy
 * Matplotlib
 * Os
+* Time
+* Math
