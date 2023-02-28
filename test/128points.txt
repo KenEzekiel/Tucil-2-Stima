@@ -1,0 +1,7 @@
+Both methods returns the same results!
+Closest Distance: 2.245
+Pair of points index: [82 84]
+82: [61.733 37.588 64.607]
+84: [62.225 35.398 64.639]
+DNC Statistics: 128 operations at 0.01533 seconds
+BF Statistics: 16129 operations at 0.12453 seconds
