@@ -61,7 +61,7 @@ Implementing it into 3 Dimensional space and then n-Dimensional space is a more 
 
 ## Running The Program
 
-To run the program, simply use the command `run.bat` on Windows or directly run the `main.py` python script in the `src` folder
+To run the program, simply run the `main.py` python script in the `src` folder
 
 ## Libraries Used
 
