@@ -75,13 +75,19 @@ else:
 
     Input = InputHandler(n_points, n_dim, size, decimalOn=decimal, randomize=random, inputVector=vec)
 
+showProgress = input(bcolors.BOLD + bcolors.HEADER + "Show progress? [Useful in tracking HUGE vectors which needs > 1000 ops] (y/n) " + bcolors.ENDC)
+if (showProgress == "y"):
+    Mt.showProgress = True
+    Bf.showProgress = True
 # Divide and Conquer
 print(bcolors.BOLD + bcolors.WARNING + "START CONQUERING!" + bcolors.ENDC)
+if Mt.showProgress:
+    print("Operations completed: ", end='')
 timestart = time.perf_counter()
 pair, dist = Mt.getClosestPair(Input.vecArr, Input.num)
 timefinish = time.perf_counter()
 timeduration = np.round(timefinish - timestart, 5)
-print(bcolors.BOLD + bcolors.OKCYAN + "closest distance:" ,dist, bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + "\nclosest distance:" ,dist, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.OKCYAN + "pair of points index:", pair, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[0]}: {Input.vecArr[pair[0]]}" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[1]}: {Input.vecArr[pair[1]]}" + bcolors.ENDC)
@@ -92,11 +98,13 @@ print(bcolors.BOLD + bcolors.WARNING + "NOW THE PROBLEM HAS BEEN CONQUERED! DEVI
 
 # Brute Force
 print(bcolors.BOLD + bcolors.WARNING + "\nNow Bruteforcing your way through...." + bcolors.ENDC)
+if Bf.showProgress:
+    print("Operations completed: ")
 timestart = time.perf_counter()
 pairBF, distBF = Bf.bruteforce(Input.vecArr)
 timefinish = time.perf_counter()
 timedurationBF = np.round(timefinish - timestart, 5)
-print(bcolors.BOLD + bcolors.OKCYAN + "closest distance:" ,distBF, bcolors.ENDC)
+print(bcolors.BOLD + bcolors.OKCYAN + "\nclosest distance:" ,distBF, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.OKCYAN + "pair of points index:", pairBF, bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[0]}: {Input.vecArr[pair[0]]}" + bcolors.ENDC)
 print(bcolors.BOLD + bcolors.WARNING + f"{pair[1]}: {Input.vecArr[pair[1]]}" + bcolors.ENDC)
@@ -121,6 +129,12 @@ if (fileSave == "y"):
     direc = os.path.dirname(path)
     direc = direc.replace('src', 'test')
     f = open(f"{direc}/{filename}.txt", 'w')
+
+    f.write(f"Calculated {n_points} points.\n")
+    f.write(f"Dimension: {n_dim}\n")
+    f.write(f"Threshold: 0-{size} units.\n")
+    if decimal:
+        f.write(f"Included decimal numbers.\n\n")
     if(dist == distBF):
         f.write("Both methods returns the same results!\n")
     f.write(f"Closest Distance: {dist}\n")

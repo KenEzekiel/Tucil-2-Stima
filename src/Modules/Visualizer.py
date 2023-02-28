@@ -82,7 +82,7 @@ def visualize3DResult(vectors: numpy.array, idxpair):
 
     ax.scatter(xdata, ydata, zdata, color= "black", linewidth=0.5)
     ax.scatter(xres, yres, zres, color=RGB, linewidth=0.5)
-    plt.savefig('../test/Visualizer.png', dpi=300) 
+    plt.savefig(f"Visualizer.png", dpi=300) 
 
     plt.show()
     

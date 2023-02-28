@@ -2,9 +2,11 @@ import math
 import numpy
 
 n = 0
+showProgress = False
 
 def bruteforce(vectors: numpy.array):
     global n
+    global showProgress
     # print(vectors.vecArr.shape[0])
     closest = (numpy.sqrt(numpy.sum(numpy.square(vectors[1][:] - vectors[0][:]))))
 
@@ -30,9 +32,12 @@ def bruteforce(vectors: numpy.array):
                 # Check if value is smaller than closest value
                 val = math.sqrt(temp)
 
-                # TESTING
-                # print(val)
+                # Show progrss
+                if showProgress and n % 1000 == 0:
+                    print(f"[{n} / {vectors.shape[0]**2}] operations")
                 n += 1
+
+                # Checking
                 if (val < closest):
                     closest = val
                     idxpair = numpy.array([i, j])

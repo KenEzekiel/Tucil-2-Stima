@@ -1,0 +1,7 @@
+Both methods returns the same results!
+Closest Distance: 32.441
+Pair of points index: [231 244]
+231: [241.743 256.396  89.701 218.531 985.103]
+244: [250.881 268.71   88.717 191.215 993.48 ]
+DNC Statistics: 1374 operations at 0.2436 seconds
+BF Statistics: 998001 operations at 9.69494 seconds

@@ -1,6 +1,8 @@
 import numpy
+import math
 
 n = 0
+showProgress = False
 
 # ======================================================================= #
 # DIVIDE AND CONQUER
@@ -8,6 +10,10 @@ n = 0
 
 def getDistanceBetweenTwoPoints(A : numpy.array, B : numpy.array):
     global n
+    global showProgress
+    # Show progress
+    if showProgress and n % 1000 == 0:
+        print(f"[{n} operations completed]")
     n += 1
     # return numpy.linalg.norm(A - B)
     # sum of squares
