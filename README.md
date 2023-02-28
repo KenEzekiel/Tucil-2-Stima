@@ -40,7 +40,23 @@ Implementing it into 3 Dimensional space and then n-Dimensional space is a more 
 ## Program Structure
 
 ```
-
+│  
+│   README
+│
+├─── doc
+│        Tucil2_13521089_13521171
+├─── input
+│        test
+├─── src
+│     ├─── Modules
+│     │       Bruteforce.py
+│     │       DivideandConquer.py
+│     │       InputHandler.py
+│     │       Sorting.py
+│     │       Visualizer.py
+│     └─── main.py
+└─── test
+         visualizer.png
 ```
 
 ## Running The Program

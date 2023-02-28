@@ -1,0 +1,9 @@
+Both methods returns the same results!
+Closest Distance: 279.359
+Pair of points index: [722 910]
+722: [721.13  447.046 108.994 813.956 696.734 782.862 672.114 369.759 279.138
+ 697.996]
+910: [918.104 541.815  88.694 883.09  778.365 821.989 634.324 294.797 214.768
+ 773.39 ]
+DNC Statistics: 5348 operations at 1.44834 seconds
+BF Statistics: 998001 operations at 59.83016 seconds
