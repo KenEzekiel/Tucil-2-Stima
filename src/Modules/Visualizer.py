@@ -2,6 +2,22 @@ import matplotlib.pyplot as plt
 import numpy
 from mpl_toolkits import mplot3d
 
+def visualize1DResult(vectors: numpy.array, idxpair):
+    print("Visualizing Vectors...")
+    val = 0
+    xres = []
+    xdata = []
+    for i in range(vectors.shape[0]):
+        if i in idxpair:
+            # data for results
+            xres = numpy.append(xres, vectors[i,0])    
+        else:
+            # data
+            xdata = numpy.append(xdata, vectors[i,0])   
+    plt.scatter(xdata, numpy.zeros_like(xdata) + val, color='black')
+    plt.scatter(xres, numpy.zeros_like(xres) + val, color='green')
+    plt.show()
+
 def visualize2DResult(vectors: numpy.array, idxpair):
     print("Visualizing Vectors...")
     # Configure Plot
@@ -14,7 +30,7 @@ def visualize2DResult(vectors: numpy.array, idxpair):
     # plt.set_xlabel('X Label')
     # plt.set_ylabel('Y Label')
 
-    # Data for three-dimensional scattered points
+    # Data for two-dimensional scattered points
     for i in range(vectors.shape[0]):
         if i in idxpair:
             # data for results

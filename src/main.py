@@ -1,6 +1,7 @@
 from Modules.InputHandler import InputHandler
 from Modules.Visualizer import visualize3DResult
 from Modules.Visualizer import visualize2DResult
+from Modules.Visualizer import visualize1DResult
 import Modules.DivideAndConquer as Mt
 import Modules.Bruteforce as Bf
 import time
@@ -115,7 +116,9 @@ print(bcolors.BOLD + bcolors.WARNING + "Oof! That took a lot longer" + bcolors.E
 
 
 visualize = input(bcolors.BOLD + bcolors.HEADER + "Visualize points? (y/n) " + bcolors.ENDC)
-if (visualize == "y" and Input.dimension == 2):
+if (visualize == "y" and Input.dimension == 1):
+    visualize1DResult(Input.vecArr, pair)
+elif (visualize == "y" and Input.dimension == 2):
     visualize2DResult(Input.vecArr, pair)
 elif (visualize == "y" and Input.dimension == 3):
     visualize3DResult(Input.vecArr, pair)
