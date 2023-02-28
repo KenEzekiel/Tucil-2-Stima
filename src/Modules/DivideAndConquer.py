@@ -100,7 +100,7 @@ def getClosestPair(vectors : numpy.array, n : int):
             # get shortest distance, compare all the points with y distance <= delta (closest) and z distance <= delta (closest) and so on for n-dimensions
             # there will always be a hard limit on the number of points for every point inside the slab, for 2D, it is 6, for 3D it is 18 and so on
             # thus O(n * n) will be O(n * k) where k is a constant, 
-            # therefore O(n), even considering the pessimistic scenario where all points are in the slab
+            # therefore O(n) for every dimension except x thus O(n*(k^(d-1))), even considering the pessimistic scenario where all points are in the slab
             nrowleft, ncolleft = allpointsleft.shape
             nrowright, ncolright = allpointsright.shape
             for i in range(0, nrowleft):
@@ -118,7 +118,7 @@ def getClosestPair(vectors : numpy.array, n : int):
                                 idxpair = numpy.array([idxmappingleft[i], idxmappingright[j]]).astype(int)
                                 # print(idxpair, idxpair[0])
             
-        # Calculating the T(n) : O(n log n) (from the DnC algorithm) + O(nk) (see the above comments for description) = O(n log n)
+        # Calculating the T(n) : O((n*(k^(d - 1)))log n) = O(n log n) (from the DnC algorithm) (where d is the dimension and k is a constant) (see the above comments for description)
         return idxpair, numpy.round(closest, 3)
 
 
