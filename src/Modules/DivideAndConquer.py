@@ -13,7 +13,7 @@ def getDistanceBetweenTwoPoints(A : numpy.array, B : numpy.array):
     global showProgress
     # Show progress
     if showProgress and n % 1000 == 0:
-        print(f"[{n} operations completed]")
+        print(f"[{n+1} operations completed]")
     n += 1
     # return numpy.linalg.norm(A - B)
     # sum of squares
