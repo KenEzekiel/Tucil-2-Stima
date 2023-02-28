@@ -18,12 +18,6 @@ def getDistanceBetweenTwoPoints(A : numpy.array, B : numpy.array):
     # Square rooting it gives the euclidean distance
     return numpy.sqrt(squared_sum)
 
-def AppendifNone(A, B):
-    C = B[::-1]
-    if (B in A) or (C in A):
-        return A
-    else:
-        return numpy.append(A, B)
 
 def getClosestPair(vectors : numpy.array, n : int):
         closest : float
