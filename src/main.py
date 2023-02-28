@@ -83,7 +83,7 @@ if (showProgress == "y"):
 # Divide and Conquer
 print(bcolors.BOLD + bcolors.WARNING + "START CONQUERING!" + bcolors.ENDC)
 if Mt.showProgress:
-    print("Operations completed: ", end='')
+    print("Operations completed: ")
 timestart = time.perf_counter()
 pair, dist = Mt.getClosestPair(Input.vecArr, Input.num)
 timefinish = time.perf_counter()
