@@ -29,7 +29,8 @@ def getClosestPair(vectors : numpy.array, n : int):
         closest : float
         idxpair = numpy.array([])
         if (n == 1):
-            print("No Closest Pair for one point!")
+            # print("No Closest Pair for one point!")
+            pass
         elif (n == 2):
             # print("Pair")
             closest = getDistanceBetweenTwoPoints(vectors[0], vectors[1])
