@@ -1,7 +1,7 @@
 from Modules.InputHandler import InputHandler
 from Modules.Visualizer import visualize3DResult
 from Modules.Visualizer import visualize2DResult
-import Modules.MathService as Mt
+import Modules.DivideAndConquer as Mt
 import Modules.Bruteforce as Bf
 import time
 import numpy as np

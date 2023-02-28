@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy
 from mpl_toolkits import mplot3d
-import numpy
 
 def visualize2DResult(vectors: numpy.array, idxpair):
     print("Visualizing Vectors...")
