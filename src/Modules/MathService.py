@@ -78,20 +78,28 @@ def getClosestPair(vectors : numpy.array, n : int):
             # x0 is the middle point of division
             x0 = ((vectors[n_div-1][0] + vectors[n_div][0]) / 2)
             # get all points inside the slab x0 with unbounded y and z
-            allpoints = numpy.array([])
-            idxmapping = numpy.array([])
-            npoints = 0
+            allpointsleft = numpy.array([])
+            allpointsright = numpy.array([])
+            idxmappingleft = numpy.array([])
+            idxmappingright = numpy.array([])
+            npointsleft = 0
+            npointsright = 0
             for i in range(n):
                 # print(i)
                 # print(i[0])
                 # print(x0)
                 # print(closest)
-                if vectors[i][0] >= x0 - closest and vectors[i][0] <= x0 + closest:
-                    allpoints = numpy.append(allpoints, vectors[i])
-                    idxmapping = numpy.append(idxmapping, i)
-                    npoints += 1
-            allpoints = numpy.reshape(allpoints, (npoints, vectors[0].size))
-            # print(allpoints)
+                if vectors[i][0] >= x0 - closest and vectors[i][0] < x0:
+                    allpointsleft = numpy.append(allpointsleft, vectors[i])
+                    idxmappingleft = numpy.append(idxmappingleft, i)
+                    npointsleft += 1
+                if vectors[i][0] >= x0 and vectors[i][0] <= x0 + closest: # points in the middle included in the right, if there is (should be none)
+                    allpointsright = numpy.append(allpointsright, vectors[i])
+                    idxmappingright = numpy.append(idxmappingright, i)
+                    npointsright += 1
+            allpointsleft = numpy.reshape(allpointsleft, (npointsleft, vectors[0].size))
+            allpointsright = numpy.reshape(allpointsright, (npointsright, vectors[0].size))
+            # print(allpointsleft, allpointsright)
             # print(idxmapping)
             # only need to consider these points in the slab
 
@@ -99,12 +107,12 @@ def getClosestPair(vectors : numpy.array, n : int):
             # there will always be a hard limit on the number of points for every point inside the slab, for 2D, it is 6, for 3D it is 18 and so on
             # thus O(n * n) will be O(n * k) where k is a constant, 
             # therefore O(n), even considering the pessimistic scenario where all points are in the slab
-            nrow, ncol = allpoints.shape
-            for i in range(0, nrow):
-                for j in range(0, nrow):
-                    if i != j:
-                        p1 = allpoints[i]
-                        p2 = allpoints[j]
+            nrowleft, ncolleft = allpointsleft.shape
+            nrowright, ncolright = allpointsright.shape
+            for i in range(0, nrowleft):
+                for j in range(0, nrowright):
+                        p1 = allpointsleft[i]
+                        p2 = allpointsright[j]
                         # get all distance of p1 and p2 in the y and z dimension (in n-dimension, get all n-1 dimension's distance)
                         p3 = abs(p1 - p2)[1:]
                         # check if their distances <= delta (closest)
@@ -113,7 +121,7 @@ def getClosestPair(vectors : numpy.array, n : int):
                             distance = getDistanceBetweenTwoPoints(p1, p2)
                             if distance < closest:
                                 closest = distance
-                                idxpair = numpy.array([idxmapping[i], idxmapping[j]]).astype(int)
+                                idxpair = numpy.array([idxmappingleft[i], idxmappingright[j]]).astype(int)
                                 # print(idxpair, idxpair[0])
             
         # Calculating the T(n) : O(n log n) (from the DnC algorithm) + O(nk) (see the above comments for description) = O(n log n)
