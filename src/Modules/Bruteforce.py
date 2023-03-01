@@ -35,8 +35,11 @@ def bruteforce(vectors: numpy.array):
                 # Show progrss
                 # if showProgress:
                 #     print(f"[{n % (int(((vectors.shape[0]-1)**2)*(0.1)))}")
-                if showProgress and (n % int(((vectors.shape[0]-1)**2)*(0.1)) == 0):
-                    print(f"[{n+1} / {(vectors.shape[0]-1)**2}] operations")
+                if showProgress:
+                    if ((vectors.shape[0]-1)**2) < 10:
+                        print(f"[{n+1} / {(vectors.shape[0]-1)**2}] operations")
+                    elif ((n % int(((vectors.shape[0]-1)**2)*(0.1)) == 0)):
+                        print(f"[{n+1} / {(vectors.shape[0]-1)**2}] operations")
                 n += 1
 
                 # Checking
