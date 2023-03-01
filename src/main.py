@@ -46,7 +46,7 @@ if (randomize == "y"):
             n_points = int(input(bcolors.BOLD + bcolors.HEADER +"Enter The Number of Points : "+bcolors.ENDC))
             n_dim = int(input(bcolors.BOLD + bcolors.HEADER +"Enter The Number of Dimensions : "+bcolors.ENDC))
             size = int(input(bcolors.BOLD + bcolors.HEADER +"Enter max threshold size for a point : "+bcolors.ENDC))
-            if (n_points > 1 and n_dim > 1 and size >= 1):
+            if (n_points > 1 and n_dim >= 1 and size >= 1):
                 break
             else:
                 print(bcolors.BOLD + bcolors.WARNING +"\nPlease enter values correctly!"+bcolors.ENDC)
