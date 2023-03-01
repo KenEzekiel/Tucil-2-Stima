@@ -46,7 +46,7 @@ if (randomize == "y"):
             n_points = int(input(bcolors.BOLD + bcolors.HEADER +"Enter The Number of Points : "+bcolors.ENDC))
             n_dim = int(input(bcolors.BOLD + bcolors.HEADER +"Enter The Number of Dimensions : "+bcolors.ENDC))
             size = int(input(bcolors.BOLD + bcolors.HEADER +"Enter max threshold size for a point : "+bcolors.ENDC))
-            if (n_points > 1 and n_dim >= 1 and size >= 1):
+            if (n_points > 1 and n_dim >= 1):
                 break
             else:
                 print(bcolors.BOLD + bcolors.WARNING +"\nPlease enter values correctly!"+bcolors.ENDC)
@@ -67,10 +67,14 @@ else:
     # print(direc)
     os.chdir(direc)
     vec = []
-    with open(f"{direc}/{filename}.txt", 'r') as file:
-        for line in file.read().split('\n'):
-            # print(line.split(' '))
-            vec.append(line.split(' '))        
+    try:
+        with open(f"{direc}/{filename}.txt", 'r') as file:
+            for line in file.read().split('\n'):
+                # print(line.split(' '))
+                vec.append(line.split(' '))  
+    except FileNotFoundError as e:
+        print(bcolors.BOLD + bcolors.WARNING +"Can't find the specified file. Exiting..."+bcolors.ENDC)
+        print(f"{e}")      
 
     vec = np.array(vec).astype(float)
     # print(vec)
