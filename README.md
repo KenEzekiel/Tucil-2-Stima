@@ -14,7 +14,7 @@
 
 ## Project Description
 
-A Closest pair of points problem solver using the Divide and Conquer Algorithm, made by Kenneth Ezekiel (13521089) and Alisha Listya (13521171) for the Algorithm & Design Course
+A Closest pair of points problem solver using the Divide and Conquer Algorithm, Bandung Institute of Technology, made by Kenneth Ezekiel (13521089) and Alisha Listya (13521171) for the Algorithm & Design Course
 
 ## Problem Description
 
